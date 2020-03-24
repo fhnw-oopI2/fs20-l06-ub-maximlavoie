@@ -3,6 +3,7 @@ package ch.fhnw.oop2.tasky.part4.ui;
 import java.util.stream.Stream;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -113,24 +114,36 @@ public class ApplicationUI extends BorderPane {
 
 		hBoxR.getChildren().addAll(vBoxL, vBoxR);
 
-		Stream.of(id, title, desc, date, state).forEach(n -> n.setMinWidth(30));
+		Stream.of(id, title, desc, date, state).forEach(n -> n.setMinWidth(50));
+		
+		double textHeight=25;
+		double areaHeight=180;
+		System.out.println(textHeight);
+		id.setMinHeight(textHeight);
+		title.setMinHeight(textHeight);
+		desc.setMinHeight(areaHeight);
+		date.setMinHeight(textHeight);
+		state.setMinHeight(textHeight);
+		
+		desc.setAlignment(Pos.TOP_LEFT);
 
 		vBoxL.setSpacing(10);
-		vBoxL.setPadding(new Insets(10));
+		vBoxL.setPadding(new Insets(10,5,10,10));
 		vBoxL.getChildren().addAll(id, title, desc, date, state, saveB);
 
 		vBoxR.setSpacing(10);
-		vBoxR.setPadding(new Insets(10));
+		vBoxR.setPadding(new Insets(10,10,10,5));
 		vBoxR.getChildren().addAll(idText, titleText, descArea, datePicker, box, deleteB);
 	}
 
 	private void leftSide() {
-		Stream.of(todo, doing, done).forEach(n -> n.setMinWidth(128));
+		Stream.of(todo, doing, done).forEach(n -> n.setMinWidth(100));
 
 		mainL.setSpacing(10);
 		mainL.setPadding(new Insets(10));
 
 		hBoxL1.getChildren().addAll(todo, doing, done);
+		hBoxL1.setSpacing(25);
 
 		hBoxL2.setSpacing(25);
 		hBoxL2.setPrefWidth(50);
